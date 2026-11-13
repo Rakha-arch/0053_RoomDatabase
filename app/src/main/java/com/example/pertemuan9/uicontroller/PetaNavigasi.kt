@@ -59,5 +59,22 @@ fun SiswaTopAppBar(
     )
 }
 
-
+@Composable
+fun HostNavigasi(
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = modifier
+    ) {
+        composable(DestinasiHome.route) {
+            HalamanHome()
+        }
+        composable(DestinasiEntry.route) {
+            HalamanEntry(navigateBack = { navController.popBackStack() })
+        }
+    }
+}
 
