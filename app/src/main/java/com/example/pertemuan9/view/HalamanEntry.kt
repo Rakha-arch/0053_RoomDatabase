@@ -102,4 +102,46 @@ fun EntrySiswaBody(
     }
 }
 
+@Composable
+fun FormInputSiswa(
+    detailSiswa: DetailSiswa,
+    modifier: Modifier = Modifier,
+    onValueChange: (DetailSiswa) -> Unit = {},
+    enabled: Boolean = true
+) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        OutlinedTextField(
+            value = detailSiswa.nama,
+            onValueChange = { onValueChange(detailSiswa.copy(nama = it)) },
+            label = { Text("Nama") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
+            value = detailSiswa.alamat,
+            onValueChange = { onValueChange(detailSiswa.copy(alamat = it)) },
+            label = { Text("Alamat") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
+            value = detailSiswa.telpon,
+            onValueChange = { onValueChange(detailSiswa.copy(telpon = it)) },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+            label = { Text("Telepon") },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        if (enabled) {
+            Text("* Wajib diisi")
+        }
+        Divider(thickness = 1.dp)
+    }
+}
 
