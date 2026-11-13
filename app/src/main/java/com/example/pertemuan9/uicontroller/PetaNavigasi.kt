@@ -15,8 +15,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.pertemuan9.R
-import com.example.pertemuan9.view.HalamanEntry
-import com.example.pertemuan9.view.HalamanHome
+import com.example.pertemuan9.view.EntrySiswaScreen
+import com.example.pertemuan9.view.HomeScreen
 
 object DestinasiHome : DestinasiNavigasi {
     override val route = "home"
@@ -70,10 +70,16 @@ fun HostNavigasi(
         modifier = modifier
     ) {
         composable(DestinasiHome.route) {
-            HalamanHome()
+            HomeScreen(
+                navigateToItemEntry = {
+                    navController.navigate(DestinasiEntry.route)
+                }
+            )
         }
         composable(DestinasiEntry.route) {
-            HalamanEntry(navigateBack = { navController.popBackStack() })
+            EntrySiswaScreen(
+                navigateBack = { navController.popBackStack() }
+            )
         }
     }
 }
